@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .emp{
+            background-color: blue;
+            color: white;
+            padding: 20px 25px;
+            font-size: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border-radius: 5px;
+            position: relative;
+        }
+        .emp::before{
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            box-shadow: 0px 0px 5px black;
+            left: 0;
+            top: 0;
+            border-top-left-radius: 5px;
+        }
+        .emp::after{
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            box-shadow: 0px 0px 5px black;
+            right: 0;
+            bottom: 0;
+            border-bottom-right-radius: 5px;
+        }
+    </style>
+</head>
+
+<body title="body">
+    <div class="emp"></div>
+    <script>
+        setInterval(()=>{
+           let date = new Date();
+           let seconds = date.getSeconds();
+           let minutes = date.getMinutes();
+           let hours = date.getHours();
+           let emp = document.querySelector(".emp");
+           let am = "AM";
+           let pm = "PM";
+           emp.innerHTML = hours + ":" + minutes + ":" + seconds;
+     
+           
+           if(hours > 12){
+            emp.innerHTML = hours + ":" + minutes + ":" + seconds + " " + pm;
+        }
+         else  if(seconds < 10){
+            emp.innerHTML = hours + ":" + minutes + ":" + "0" + seconds;
+
+           }
+          else{
+            emp.innerHTML = hours + ":" + minutes + ":" + seconds + " " + am;
+         }
+        
+      
+         
+        },1000);
+         
+        
+    </script>
+</body>
+
+</html>
+
+
